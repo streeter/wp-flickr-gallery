@@ -19,19 +19,19 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 
-define('FALBUM_VERSION', '0.9.0');
+define('WPFLICKRGALLERY_VERSION', '0.9.0');
 
-define('FALBUM_PATH', dirname(__FILE__));
+define('WPFLICKRGALLERY_PATH', dirname(__FILE__));
 
-define('FALBUM_DO_NOT_CACHE', 0);
-define('FALBUM_CACHE_EXPIRE_SHORT', 3600); //How many seconds to wait between refreshing cache (default = 3600 seconds - hour)
-define('FALBUM_CACHE_EXPIRE_LONG', 604800); //How many seconds to wait between refreshing cache (default = 604800 seconds - 1 week)
+define('WPFLICKRGALLERY_DO_NOT_CACHE', 0);
+define('WPFLICKRGALLERY_CACHE_EXPIRE_SHORT', 3600); //How many seconds to wait between refreshing cache (default = 3600 seconds - hour)
+define('WPFLICKRGALLERY_CACHE_EXPIRE_LONG', 604800); //How many seconds to wait between refreshing cache (default = 604800 seconds - 1 week)
 
-define('FALBUM_API_KEY', '');
-define('FALBUM_SECRET', '');
+define('WPFLICKRGALLERY_API_KEY', '');
+define('WPFLICKRGALLERY_SECRET', '');
 
-define('FALBUM_FLICKR_URL_IMAGE_1', 'http://farm');
-define('FALBUM_FLICKR_URL_IMAGE_2', '.static.flickr.com');
+define('WPFLICKRGALLERY_FLICKR_URL_IMAGE_1', 'http://farm');
+define('WPFLICKRGALLERY_FLICKR_URL_IMAGE_2', '.static.flickr.com');
 
 class WPFlickrGallery {
 
@@ -51,10 +51,10 @@ class WPFlickrGallery {
 
 	function __construct() {
 
-		require_once FALBUM_PATH.'/lib/Log.php';
+		require_once WPFLICKRGALLERY_PATH.'/lib/Log.php';
 
 		// Init Lang
-		include_once(FALBUM_PATH . '/wp-flickr-gallery-lang.php');
+		include_once(WPFLICKRGALLERY_PATH . '/wp-flickr-gallery-lang.php');
 
 		add_filter('wp_title', array(&$this, 'title_filter'));
 
@@ -902,7 +902,7 @@ class WPFlickrGallery {
 
 			$this->template->reset('exif');
 
-			$exif_resp = $this->_call_flickr_php('flickr.photos.getExif', array ('photo_id' => $photo_id, 'secret' => $secret), FALBUM_CACHE_EXPIRE_LONG);
+			$exif_resp = $this->_call_flickr_php('flickr.photos.getExif', array ('photo_id' => $photo_id, 'secret' => $secret), WPFLICKRGALLERY_CACHE_EXPIRE_LONG);
 			if (!isset ($exif_resp)) {
 				return;
 			}
@@ -949,7 +949,7 @@ class WPFlickrGallery {
 
 		if ($this->_can_edit()) {
 
-			$resp = $this->_call_flickr_php('flickr.photos.setMeta', array ('photo_id' => $photo_id, 'title' => $title, 'description' => $description), FALBUM_DO_NOT_CACHE, true);
+			$resp = $this->_call_flickr_php('flickr.photos.setMeta', array ('photo_id' => $photo_id, 'title' => $title, 'description' => $description), WPFLICKRGALLERY_DO_NOT_CACHE, true);
 			if (!isset ($resp)) {
 				return;
 			}
@@ -1390,9 +1390,9 @@ class WPFlickrGallery {
 	}
 
 	/* Function that actually makes the flickr calls */
-	function _call_flickr_php($method, $args = array (), $cache_option = FALBUM_CACHE_EXPIRE_SHORT, $post = false) {
+	function _call_flickr_php($method, $args = array (), $cache_option = WPFLICKRGALLERY_CACHE_EXPIRE_SHORT, $post = false) {
 
-		$args = array_merge(array ('method' => $method, 'api_key' => FALBUM_API_KEY, 'format'	=> 'php_serial'), $args);
+		$args = array_merge(array ('method' => $method, 'api_key' => WPFLICKRGALLERY_API_KEY, 'format'	=> 'php_serial'), $args);
 
 		if ($this->_show_private() == 'true' || $post == true) {
 			$args = array_merge($args, array ('auth_token' => $this->options['token']));
@@ -1407,7 +1407,7 @@ class WPFlickrGallery {
 
 		$api_sig = '';
 		if ($this->_show_private() == 'true' || $post == true) {
-			$api_sig = md5(FALBUM_SECRET.$auth_sig);
+			$api_sig = md5(WPFLICKRGALLERY_SECRET.$auth_sig);
 		}
 
 		$args = array_merge($args, array ('api_sig' => $api_sig));
@@ -1437,7 +1437,7 @@ class WPFlickrGallery {
 	}
 
 	/* Function that opens the URLS - uses libcurl by default, else falls back to fsockopen */
-	function _fopen_url($url, $args = array (), $cache_option = FALBUM_CACHE_EXPIRE_SHORT, $post = false, $fsocket_timeout = 120) {
+	function _fopen_url($url, $args = array (), $cache_option = WPFLICKRGALLERY_CACHE_EXPIRE_SHORT, $post = false, $fsocket_timeout = 120) {
 
 		$urlParts = parse_url($url);
 		$host = $urlParts['host'];
@@ -1690,11 +1690,11 @@ class WPFlickrGallery {
 	}
 
 	/* Gets info from Cache Table */
-	function _get_cached_data($key, $cache_option = FALBUM_CACHE_EXPIRE_SHORT) {
+	function _get_cached_data($key, $cache_option = WPFLICKRGALLERY_CACHE_EXPIRE_SHORT) {
 
-		require_once (FALBUM_PATH.'/lib/Lite.php');
+		require_once (WPFLICKRGALLERY_PATH.'/lib/Lite.php');
 
-		$options = array ("cacheDir" => FALBUM_PATH."/cache/", "lifeTime" => $cache_option);
+		$options = array ("cacheDir" => WPFLICKRGALLERY_PATH."/cache/", "lifeTime" => $cache_option);
 
 		$Cache_Lite = new Cache_Lite($options);
 		$data = $Cache_Lite->get($key);
@@ -1711,11 +1711,11 @@ class WPFlickrGallery {
 	}
 
 	/* Function to store the data in the cache table */
-	function _set_cached_data($key, $data, $cache_option = FALBUM_CACHE_EXPIRE_SHORT) {
+	function _set_cached_data($key, $data, $cache_option = WPFLICKRGALLERY_CACHE_EXPIRE_SHORT) {
 
-		require_once (FALBUM_PATH.'/lib/Lite.php');
+		require_once (WPFLICKRGALLERY_PATH.'/lib/Lite.php');
 
-		$options = array ("cacheDir" => FALBUM_PATH."/cache/", "lifeTime" => $cache_option);
+		$options = array ("cacheDir" => WPFLICKRGALLERY_PATH."/cache/", "lifeTime" => $cache_option);
 
 		$Cache_Lite = new Cache_Lite($options);
 
@@ -1817,7 +1817,7 @@ class WPFlickrGallery {
 	}
 
 	function is_album_page() {
-		return defined('FALBUM') && constant('FALBUM');
+		return defined('WPFLICKRGALLERY') && constant('WPFLICKRGALLERY');
 	}
 
 
@@ -1828,7 +1828,7 @@ class WPFlickrGallery {
 	 * @param $_style The template style to use.
 	 */
 	function _construct_template($_style) {
-		require_once(FALBUM_PATH.'/Template.class.php');
+		require_once(WPFLICKRGALLERY_PATH.'/Template.class.php');
 		$this->template = new Template($_style);
 	}
 	
@@ -1844,7 +1844,7 @@ class WPFlickrGallery {
 	}
 	
 	static function create_flickr_image_url($farm, $server, $photo_id, $secret, $size)  {
-		$url = FALBUM_FLICKR_URL_IMAGE_1."{$farm}".FALBUM_FLICKR_URL_IMAGE_2."/{$server}/{$photo_id}_{$secret}";
+		$url = WPFLICKRGALLERY_FLICKR_URL_IMAGE_1."{$farm}".WPFLICKRGALLERY_FLICKR_URL_IMAGE_2."/{$server}/{$photo_id}_{$secret}";
 		if ($size) {
 			$url .= "_{$size}";
 		}

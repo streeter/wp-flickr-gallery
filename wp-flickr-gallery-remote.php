@@ -21,7 +21,7 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
 */
 
-define('FALBUM_STANDALONE', true);
+define('WPFLICKRGALLERY_STANDALONE', true);
 require_once(dirname(__FILE__).'/wp-flickr-gallery.php');
 
 $action = $_REQUEST['action'];

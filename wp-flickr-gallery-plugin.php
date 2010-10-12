@@ -66,7 +66,7 @@ function wp_flickr_gallery_admin_print_options_page() {
 	$fa_table =  $wpdb->prefix . "wp-flickr-gallery_cache";
 
 	$ver = $options['version'];
-	if ($ver != FALBUM_VERSION) {
+	if ($ver != WPFLICKRGALLERY_VERSION) {
 		wp_flickr_gallery_init();
 	}
 
@@ -232,7 +232,7 @@ function wp_flickr_gallery_admin_print_options_page() {
 	if (isset ($_POST['GetToken'])) {
 		$frob2 = $_POST['frob'];
 	
-		$resp = $wp_flickr_gallery->_call_flickr_php('flickr.auth.getToken',array ("frob" => $frob2), $cache_option = FALBUM_CACHE_EXPIRE_SHORT, $post = true);
+		$resp = $wp_flickr_gallery->_call_flickr_php('flickr.auth.getToken',array ("frob" => $frob2), $cache_option = WPFLICKRGALLERY_CACHE_EXPIRE_SHORT, $post = true);
 
 		if (isset($resp)) {
 			$token = $resp['auth']['token']['_content'];
@@ -323,7 +323,7 @@ function wp_flickr_gallery_admin_print_options_page() {
        <legend><?php fa_e('Initial Setup');?></legend>
         
     <?php	
-	$resp = $wp_flickr_gallery->_call_flickr_php('flickr.auth.getFrob',array (), $cache_option = FALBUM_DO_NOT_CACHE, $post = true);
+	$resp = $wp_flickr_gallery->_call_flickr_php('flickr.auth.getFrob',array (), $cache_option = WPFLICKRGALLERY_DO_NOT_CACHE, $post = true);
 	
 	if (isset($resp)) {
 
@@ -332,7 +332,7 @@ function wp_flickr_gallery_admin_print_options_page() {
 		
 			echo "<p>Error: Unable to get frob value <br /><pre>".print_r($resp,true).'</pre>Trying again...</p>';
 		
-			$resp = $wp_flickr_gallery->_call_flickr_php('flickr.auth.getFrob',array (), $cache_option = FALBUM_DO_NOT_CACHE, $post = true);
+			$resp = $wp_flickr_gallery->_call_flickr_php('flickr.auth.getFrob',array (), $cache_option = WPFLICKRGALLERY_DO_NOT_CACHE, $post = true);
 			$frob = $resp['frob']['_content'];
 			
 			if ($frob == '') {
@@ -342,9 +342,9 @@ function wp_flickr_gallery_admin_print_options_page() {
 
 		//echo '<pre>$frob-'.htmlentities($frob).'</pre>';
 
-		$link = 'http://flickr.com/services/auth/?api_key='.FALBUM_API_KEY.'&frob='.$frob.'&perms=write';
-		$parms = 'api_key'.FALBUM_API_KEY.'frob'.$frob.'permswrite';
-		$link .= '&api_sig='.md5(FALBUM_SECRET.$parms);
+		$link = 'http://flickr.com/services/auth/?api_key='.WPFLICKRGALLERY_API_KEY.'&frob='.$frob.'&perms=write';
+		$parms = 'api_key'.WPFLICKRGALLERY_API_KEY.'frob'.$frob.'permswrite';
+		$link .= '&api_sig='.md5(WPFLICKRGALLERY_SECRET.$parms);
 ?>
        
 		       <input type="hidden" name="frob" value="<?php echo $frob?>">
@@ -638,7 +638,7 @@ function wp_flickr_gallery_action_init() {
 	}
 	
 	/* Insert CSS */
-	if ((defined('FALBUM') && constant('FALBUM')) || $wp_flickr_gallery_options['wp_enable_wp-flickr-gallery_globally'] == 'true') {
+	if ((defined('WPFLICKRGALLERY') && constant('WPFLICKRGALLERY')) || $wp_flickr_gallery_options['wp_enable_wp-flickr-gallery_globally'] == 'true') {
 		$tdir_uri = get_template_directory_uri();
 		$cssUrl = get_settings('siteurl')."/wp-content/plugins/wp-flickr-gallery/styles/".$wp_flickr_gallery_options['style']."/wp-flickr-gallery.css";
 		wp_enqueue_style('wp-flickr-gallery', $cssUrl);
@@ -764,7 +764,7 @@ function wp_flickr_gallery_filter($content) {
 }
 
 function wp_flickr_gallery_action_parse_query($wp_query) {
-	if (defined('FALBUM') && constant('FALBUM')) {
+	if (defined('WPFLICKRGALLERY') && constant('WPFLICKRGALLERY')) {
 		$wp_query->is_404 = false;
 	}
 }

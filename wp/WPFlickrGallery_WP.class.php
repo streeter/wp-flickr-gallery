@@ -35,10 +35,10 @@ class WPFlickrGallery_WP extends WPFlickrGallery {
 	}
 
 	/* Gets info from Cache Table */
-	function _get_cached_data($key, $cache_option = FALBUM_CACHE_EXPIRE_SHORT) {
+	function _get_cached_data($key, $cache_option = WPFLICKRGALLERY_CACHE_EXPIRE_SHORT) {
 		$data = null;
 
-		if ($cache_option != FALBUM_REFRESH_CACHE || $cache_option != FALBUM_DO_NOT_CACHE) {
+		if ($cache_option != WPFLICKRGALLERY_REFRESH_CACHE || $cache_option != WPFLICKRGALLERY_DO_NOT_CACHE) {
 
 			global $wpdb;
 
@@ -72,7 +72,7 @@ class WPFlickrGallery_WP extends WPFlickrGallery {
 	}
 
 	/* Function to store the data in the cache table */
-	function _set_cached_data($key, $data, $cache_option = FALBUM_CACHE_EXPIRE_SHORT) {
+	function _set_cached_data($key, $data, $cache_option = WPFLICKRGALLERY_CACHE_EXPIRE_SHORT) {
 		global $wpdb;
 
 		$table = $wpdb->prefix . 'wp-flickr-gallery_cache';

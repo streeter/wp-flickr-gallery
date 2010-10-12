@@ -528,15 +528,15 @@ global $wp_flickr_gallery_lang;
 if (isset($wp_flickr_gallery_lang))
 	return;	
 	
-if (defined('FALBUM_LANG')) {	
-	$wp_flickr_gallery_locale = FALBUM_LANG;
+if (defined('WPFLICKRGALLERY_LANG')) {	
+	$wp_flickr_gallery_locale = WPFLICKRGALLERY_LANG;
 }
 
 if (empty($wp_flickr_gallery_locale)) {
 	$wp_flickr_gallery_locale = 'en_US';			
 }
 
-$mofile = FALBUM_PATH . "/lang/wp-flickr-gallery-$wp_flickr_gallery_locale.mo";
+$mofile = WPFLICKRGALLERY_PATH . "/lang/wp-flickr-gallery-$wp_flickr_gallery_locale.mo";
 
 if ( is_readable($mofile)) {
 	$input = new WPFlickrGallery_CachedFileReader($mofile);

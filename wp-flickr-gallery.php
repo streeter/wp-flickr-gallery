@@ -27,12 +27,12 @@ if (!isset ($wp_flickr_gallery)) {
 	$wp_flickr_gallery = null;
 
 	if (strpos(strtolower(dirname(__FILE__)), 'wp-content') !== false) {
-		if (FALBUM_STANDALONE === true) {
+		if (WPFLICKRGALLERY_STANDALONE === true) {
 			require_once (dirname(__FILE__).'/../../../wp-blog-header.php');
 		}
 				
 		if (defined('WPLANG')) {
-			define('FALBUM_LANG', WPLANG); 
+			define('WPFLICKRGALLERY_LANG', WPLANG); 
 		}
 		
 		require_once (dirname(__FILE__).'/wp/WPFlickrGallery_WP.class.php');
