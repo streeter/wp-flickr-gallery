@@ -1,0 +1,442 @@
+/* 
+   WPFlickrGallery Default Stylesheet
+   =================      
+   
+   This is a sample stylesheet that can be used with FAblum, and is provided so that
+   the default page looks half decent under the default Wordpress 1.5 theme - Kubrick
+   
+   This stylesheet will most probably break in other WP styles, so you can't rely 
+   entirely on this stylesheet. Use it as guidance. Ultimately, style issues are not
+   the fault of WPFlickrGallery.
+   
+   This stylesheet is commented so you know what each section does, and can customise
+   it accordingly, or pull out just the sections you want.
+*/
+
+/* ----------- WPFlickrGallery Common -------------*/
+
+.wp-flickr-gallery {
+	padding: 0px;
+	margin: 0px;
+	width: 99%;
+}
+
+.wp-flickr-gallery p {
+  	margin: 8px 0;
+}
+
+.wp-flickr-gallery img {
+  	max-width: none;
+	border: none;
+}
+
+.wp-flickr-gallery-title {	
+	color: #260;
+}
+
+#wp-flickr-gallery h3.wp-flickr-gallery-title {
+	margin-bottom: 5px;
+}
+
+#wp-flickr-gallery .wp-flickr-gallery-meta {
+	margin-bottom: 5px;
+}
+
+#wp-flickr-gallery .wp-flickr-gallery-description {
+	text-align: left;
+	padding: 0 10px;
+	font-style: italic;
+	font-size: 11px;
+	margin: 5px 0;
+}
+
+/* ----------- Gallery Grid -------------*/
+
+#wp-flickr-gallery table.wp-flickr-gallery-albums,
+#wp-flickr-gallery table.wp-flickr-gallery-album {
+	border: none;
+	margin: 0;
+	border-collapse: separate;
+	border-spacing: 20px;
+}
+#wp-flickr-gallery td.wp-flickr-gallery-album,
+#wp-flickr-gallery td.wp-flickr-gallery-photo {
+	border: none;
+	text-align: center;
+	vertical-align: top;
+}
+
+#wp-flickr-gallery .wp-caption img {
+	margin: 0;
+}
+
+#wp-flickr-gallery .wp-flickr-gallery-thumbnail {
+	margin: 5px;
+	text-align: center;
+}
+
+
+/* ----------- Albums Page -------------*/
+
+#wp-flickr-gallery .wp-flickr-gallery-albums {
+}
+
+
+
+
+/* ----------- Thumbnails -------------*/
+
+
+.wp-flickr-gallery-editable {
+     color: #000;
+     background-color: #ffffd3;
+}
+
+/* ----------- Photo Page -------------*/
+
+.wp-flickr-gallery-tags-block {
+}
+
+.wp-flickr-gallery-tags-label {
+}
+
+.wp-flickr-gallery-tags {
+}
+
+/* -- Image ---------------*/
+
+.wp-flickr-gallery-photo-block {
+	margin: 10px 5px 10px 5px;
+}
+
+
+.wp-flickr-gallery-photo-ds {
+	background: url('images/shadow.gif') no-repeat bottom right;
+}
+
+
+
+.wp-flickr-gallery-photo2 {
+	padding-right: 20px;
+	background-color: #fff;
+	border: 1px solid #a9a9a9;
+	margin: 2px 2px 2px 2px;
+	padding: 4px;
+	margin-top:10px;
+}
+
+/* -- Navigation ---------------*/
+  
+.wp-flickr-gallery-nav {
+	clear: both;	
+	margin: 5px 10px 0px -10px;
+	text-align:center;
+	padding: 8px;	
+	width: auto;	
+}
+
+.wp-flickr-gallery-nav a {
+	text-decoration: none;
+}
+  
+/* -- Description ---------------*/
+
+
+/* -- Photo Sizes ---------------*/
+
+.wp-flickr-gallery-photo-sizes-container {
+	padding: 10px 0px 3px 0px;
+}
+
+a.wp-flickr-gallery-photo-size
+{
+	background-color: #E4E0D2;
+	padding: 2px;
+	margin: 1px 3px 1px 3px;
+	color: black;
+	border: 1px solid #D4D0C2;
+	text-align: center;
+}
+
+a.wp-flickr-gallery-photo-size:hover 
+{
+	border: 1px solid #3169C6;
+	background-color: #C6D3EF;
+}
+
+/* -- EXIF Data ---------------*/
+
+.wp-flickr-gallery-exif table{
+	border: 1px solid #a9a9a9;
+	margin: 0 15px 0 0;
+}
+
+.wp-flickr-gallery-exif td {
+	margin: 5px 5px 5px 5px;
+	padding: 1px 5px 1px 5px;
+}
+.wp-flickr-gallery-exif .odd{
+	background-color: #f0f0f0
+}
+
+.wp-flickr-gallery-exif .even{
+	background-color: #e0e0e0
+}
+
+/* -- Annotations ---------------*/
+ 
+a.annotation {
+	position: absolute;
+	border: 1px solid white;
+	padding: 0;
+	display: none;
+}
+ 
+a.annotation span {
+	display: block;
+	width: 100%;
+	height: 100%;
+	background: white;
+	opacity: 0.2;
+	-moz-opacity: 0.2;
+	/*
+	filter:alpha(opacity=20);
+	*/
+}
+ 
+a.annotation:hover {
+	border-color: yellow;
+}
+
+#overDiv {
+  font-size: 1em;
+}
+
+/* ----------- Tag Cloud Page -------------*/
+
+.wp-flickr-gallery-cloud {	
+	padding: 10px;	
+	/*
+	line-height:auto;
+	*/
+	text-align:center;
+	font-family: 'Lucida Grande', Verdana, Arial, Sans-Serif;
+}
+
+.wp-flickr-gallery-cloud a {
+	text-decoration:none;
+}
+
+a.wp-flickr-gallery-tag1 {
+ font-size:10px;
+}
+
+a.wp-flickr-gallery-tag2 {
+ font-size:12px;
+ font-weight:400;
+}
+
+a.wp-flickr-gallery-tag3 {
+ font-size:16px;
+ font-weight:500;
+}
+
+a.wp-flickr-gallery-tag4 {
+ font-size:20px;
+ font-weight:600;
+}
+
+a.wp-flickr-gallery-tag5 {
+ font-size:22px;
+ font-weight:700;
+}
+
+a.wp-flickr-gallery-tag6 {
+ font-size:28px;
+ font-weight:800;
+}
+
+a.wp-flickr-gallery-tag7 {
+ font-size:30px;
+ font-weight:900;
+}
+
+/* ----------- Random Images -------------*/
+.wp-flickr-gallery-random ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	white-space: nowrap; 
+}
+
+.wp-flickr-gallery-random li {
+	display: inline;
+}
+
+/* ----------- Recent Images -------------*/
+
+.wp-flickr-gallery-album-recent {	
+	margin-bottom: 15px;
+}
+
+
+/* ----------- Annotations -------------*/
+.annotation-fontClass {font-family: 'Comic Sans MS'; font-size: 1.3em; text-align: left;}
+.annotation-capfontClass {font-family: Arial, sans-serif; font-size: 1.3em; font-weight: bold; color: #ffffff; text-align: left;}
+.annotation-capfontClass A {color: #ffffff; font-size: 1.3em;}
+.annotation-fgClass {background-color: #FFFFCC;}
+.annotation-bgClass {background-color: #FFFF66;}
+
+
+/* ----------- Navigation -------------*/
+
+.wp-flickr-gallery-navigation {
+	padding: 5px 0 5px 0;
+	margin: 10px 0 10px 0;
+}
+
+.wp-flickr-gallery-navigation-top {
+}
+
+.wp-flickr-gallery-navigation-bottom {
+}
+
+.wp-flickr-gallery-navigation-button-disabled {
+	color: gray;
+	text-align: center;
+	padding: 2px 15px 2px 15px;
+	background-color: #E4E0D2;
+}
+
+a.wp-flickr-gallery-navigation-button-prevornext {
+	padding: 2px 15px 2px 15px;
+	border: 1px solid #D4D0C2;
+	background-color: #E4E0D2;
+	text-align:center;
+	white-space: nowrap;
+	color: black;
+}
+
+a.wp-flickr-gallery-navigation-button-prevornext:visited {
+	color: black;
+}
+
+a.wp-flickr-gallery-navigation-button-prevornext:active {
+	border: 1px solid #3169C6;
+	background-color: #3169C6;
+	color: white;
+}
+
+a.wp-flickr-gallery-navigation-button-prevornext:hover {
+	border: 1px solid #3169C6;
+	background-color: #C6D3EF;
+	color: black;
+}
+
+a.wp-flickr-gallery-navigation-button ,
+a.wp-flickr-gallery-navigation-button:visited,
+a.wp-flickr-gallery-navigation-button:link,
+a.wp-flickr-gallery-navigation-button,
+a.wp-flickr-gallery-navigation-button:visited,
+a.wp-flickr-gallery-navigation-button:link {
+	padding: 2px 4px 2px 4px;
+	font-size: 100%;
+	color: black;
+}
+
+a.wp-flickr-gallery-navigation-button,
+a.wp-flickr-gallery-navigation-button:visited,
+a.wp-flickr-gallery-navigation-button:link {
+}
+
+a.wp-flickr-gallery-navigation-button.wp-flickr-gallery-navigation-current-page,
+a.wp-flickr-gallery-navigation-button.wp-flickr-gallery-navigation-current-page:visited,
+a.wp-flickr-gallery-navigation-button.wp-flickr-gallery-navigation-current-page:link {
+	border: 3px double #3169C6;
+	font-weight: bold;
+}
+
+a.otherPageLink:hover,a.curPageLink:hover {
+	text-decoration: underline;
+}
+
+/* ----------- Error Page -------------*/
+
+.wp-flickr-gallery-error {
+	font-size:1.2em;
+}
+.wp-flickr-gallery-error pre{
+	width: 99%;
+	font-size:1.2em;
+	overflow-y: hidden; 
+	overflow-x: auto;
+}
+
+/* -------------  Post Helper  -------------*/
+
+#wp-flickr-gallery-post-helper-switch {
+	float: right;
+	margin: 0px 0px 0px 0px;
+}
+
+#wp-flickr-gallery-post-helper-block {
+	width: 99%;
+	padding: 5px;
+	margin: 15px 0px 15px 0px;
+	border: 1px solid #D4D0C2;
+	background-color: #E4E0D2;
+}
+
+#wp-flickr-gallery-post-helper-block table {
+	margin: 0;
+	text-align: left;
+}
+#wp-flickr-gallery-post-helper-block input {
+	line-height: inherit;
+	margin: 0;
+}
+
+#wp-flickr-gallery-post-helper-value {
+	margin: 8px 5px 5px 8px;
+  	font-weight: bold;
+}
+
+#wp-flickr-gallery-post-helper-block-close {
+	float: right;
+}
+
+.wp-flickr-gallery-post-box {
+}
+
+/* -------------  Comments  -------------*/
+
+.wp-flickr-gallery-comment-block {
+	margin: 15px 0px 5px 0px;
+}
+
+.wp-flickr-gallery-comment-title {
+	font-weight: bold;
+}
+
+.wp-flickr-gallery-comment-author {
+	padding: 5px 5px 0px 10px;
+}
+
+.wp-flickr-gallery-comment {
+	padding: 5px 5px 5px 25px;
+	margin: 0px 0px 5px 0px;
+}
+
+
+/* -------------  Misc  -------------*/
+
+.wp-flickr-gallery-sidebar-photos {
+	overflow: hidden;
+}
+
+.wp-flickr-gallery-clear {
+	clear: both;
+}
+.wp-flickr-gallery-clear-left {
+	clear: left;
+}
