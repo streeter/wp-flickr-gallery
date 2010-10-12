@@ -26,7 +26,7 @@ $wp_flickr_gallery_options = null;
 // plugin menu
 function wp_flickr_gallery_admin_add_options_page() {
 	if (function_exists('add_options_page')) {
-		add_options_page('WPFlickrGallery Options', 'WPFlickrGallery', 8, basename(__FILE__), 'wp-flickr-gallery_admin_print_options_page');
+		add_options_page('WPFlickrGallery Options', 'WPFlickrGallery', 8, basename(__FILE__), 'wp_flickr_gallery_admin_print_options_page');
 	}
 }
 
@@ -770,8 +770,8 @@ function wp_flickr_gallery_action_parse_query($wp_query) {
 }
 
 
-add_action('parse_query', 'wp-flickr-gallery_action_parse_query');
-add_action('init', 'wp-flickr-gallery_action_init');
-add_action('admin_menu', 'wp-flickr-gallery_admin_add_options_page');
+add_action('parse_query', 'wp_flickr_gallery_action_parse_query');
+add_action('init', 'wp_flickr_gallery_action_init');
+add_action('admin_menu', 'wp_flickr_gallery_admin_add_options_page');
 
-add_filter('the_content', 'wp-flickr-gallery_filter');
+add_filter('the_content', 'wp_flickr_gallery_filter');
