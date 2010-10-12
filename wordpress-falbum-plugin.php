@@ -1,10 +1,10 @@
 <?php /*
 Plugin Name: WPFlickrGallery
-Version: 0.8.0
-Plugin URI: http://www.randombyte.net/
+Version: 0.9.0
+Plugin URI: http://github.com/streeter/wp-flickr-gallery
 Description: A plugin for displaying your <a href="http://www.flickr.com/">Flickr</a> photosets and photos in a gallery format on your Wordpress site.
-Author: Elijah Cornell
-Author URI: http://www.randombyte.net/
+Author: Chris Streeter
+Author URI: http://www.chrisstreeter.com/
 
 Copyright (c) 2010
 Released under the GPL license

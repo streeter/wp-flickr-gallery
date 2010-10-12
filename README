@@ -1,7 +1,6 @@
 WPFlickrGallery 0.9.0
 
-This is a Wordpress plugin that allows you to display your Flickr photos and
-photosets on your site.
+This is a Wordpress plugin that allows you to display your Flickr photos and photosets on your site.
 
 Copyright (c) 2010
 Released under the GPL license
@@ -10,7 +9,7 @@ http://www.gnu.org/licenses/gpl.txt
 
 WordPress 3.+  - Installation Instructions:
 -------------------------------------------------------------------------------
-1.  Download the version from GitHub (zip or tar.gz versions).
+1.  Download the version from github (zip or tar.gz versions).
 
 2.  Extract the files to the wp-content/plugins/ directory. 
     Note: The files must be located within a new directory name 'wp-flickr-gallery'
@@ -58,6 +57,3 @@ overLIB - Erik Bosrup - http://www.bosrup.com/web/overlib/
 WordPress  - http://codex.wordpress.org/License
 PEAR - Log / Cache Lite
   - http://www.php.net/license/3_01.txt
-Silk Icons - http://www.famfamfam.com/lab/icons/silk/
-
-
