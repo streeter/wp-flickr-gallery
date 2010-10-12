@@ -314,7 +314,7 @@ function wp_flickr_gallery_admin_print_options_page() {
 
 <div class="wrap">
   <h2><?php fa_e('WPFlickrGallery Options');?></h2>
-    <form method=post action="<?php echo $_SERVER['PHP_SELF']; ?>?page=wordpress-wp-flickr-gallery-plugin.php">
+    <form method=post action="<?php echo $_SERVER['PHP_SELF']; ?>?page=wp-flickr-gallery-plugin.php">
         <input type="hidden" name="update" value="true">
                        
 <?php if (!isset($options['token']) || $options['token'] == '' ) { ?>
