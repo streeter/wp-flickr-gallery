@@ -21,9 +21,9 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
 /*extern jQuery, nd */
 
-if (typeof window.wp-flickr-gallery === "undefined") {
+if (typeof window.wp_flickr_gallery === "undefined") {
 
-    var wp-flickr-gallery = function () {    
+    var wp_flickr_gallery = function () {    
     
         var first_run = true;
     
@@ -113,13 +113,13 @@ if (typeof window.wp-flickr-gallery === "undefined") {
             makeEditable: function (id) {
                 var e = jQuery('#' + id);                 
                 e.click(function () {
-                    wp-flickr-gallery.edit(e);
+                    wp_flickr_gallery.edit(e);
                 });             
                 e.mouseover(function () {
-                    wp-flickr-gallery.showAsEditable(e);
+                    wp_flickr_gallery.showAsEditable(e);
                 });             
                 e.mouseout(function () {
-                    wp-flickr-gallery.showAsEditable(e, true);
+                    wp_flickr_gallery.showAsEditable(e, true);
                 });
             },
             
@@ -173,11 +173,11 @@ if (typeof window.wp-flickr-gallery === "undefined") {
                 e.after(textarea + button);
                        
                 jQuery('#' + id + '_save').click(function () {
-                    wp-flickr-gallery.saveChanges(e);
+                    wp_flickr_gallery.saveChanges(e);
                 });
                 
                 jQuery('#' + id + '_cancel').click(function () {
-                    wp-flickr-gallery.cleanUp(e);
+                    wp_flickr_gallery.cleanUp(e);
                 });            
             },
             
@@ -185,7 +185,7 @@ if (typeof window.wp-flickr-gallery === "undefined") {
                 jQuery('#' + e.get(0).id + '_editor').remove();     
                 e.show();
                 if (!keepEditable) {
-                    wp-flickr-gallery.showAsEditable(e, true);
+                    wp_flickr_gallery.showAsEditable(e, true);
                 }        
             },
             
@@ -200,14 +200,14 @@ if (typeof window.wp-flickr-gallery === "undefined") {
                 }
                 
                 e.html("Saving...");
-                wp-flickr-gallery.cleanUp(e, true);
+                wp_flickr_gallery.cleanUp(e, true);
                 
                 var success = function (t) {
-                    wp-flickr-gallery.editComplete(t, e);
+                    wp_flickr_gallery.editComplete(t, e);
                 };
                 
                 var failure = function (t) {
-                    wp-flickr-gallery.editFailed(t, e);
+                    wp_flickr_gallery.editFailed(t, e);
                 };
                 
                 var pars = {
@@ -238,14 +238,14 @@ if (typeof window.wp-flickr-gallery === "undefined") {
                 } 
                 
                 e.html( t.responseText );
-                wp-flickr-gallery.showAsEditable(e, true);        
+                wp_flickr_gallery.showAsEditable(e, true);        
             },
             
             // Post Helper
     
             enable_post_helper: function () {
                 jQuery('#wp-flickr-gallery-post-helper-switch').click(function () {
-                    wp-flickr-gallery.show_post_helper_block();
+                    wp_flickr_gallery.show_post_helper_block();
                 });
                  
                 var x = document.getElementsByName("size");
@@ -254,7 +254,7 @@ if (typeof window.wp-flickr-gallery === "undefined") {
                         x[i].checked = true;
                     }    
                 }
-                wp-flickr-gallery.post_helper_update_value();
+                wp_flickr_gallery.post_helper_update_value();
             },
             
             show_post_helper_block: function () {
@@ -262,11 +262,11 @@ if (typeof window.wp-flickr-gallery === "undefined") {
                 jQuery('#wp-flickr-gallery-post-helper-block').show(); 
                   
                 jQuery('#wp-flickr-gallery-post-helper-block-rb').click(function () {
-                    wp-flickr-gallery.post_helper_update_value();
+                    wp_flickr_gallery.post_helper_update_value();
                 });
                 
                 jQuery('#wp-flickr-gallery-post-helper-block-close').click(function () {
-                    wp-flickr-gallery.show_post_helper_block_close();
+                    wp_flickr_gallery.show_post_helper_block_close();
                 });
             },
             
@@ -454,10 +454,10 @@ if (typeof window.wp-flickr-gallery === "undefined") {
                 // hash doesn't contain the first # character.
                 if(hash) {
                     first_run = false;
-                    wp-flickr-gallery.ajax( hash );            
+                    wp_flickr_gallery.ajax( hash );            
                 } else {
                     if (first_run === false) {        
-                        wp-flickr-gallery.ajax('');
+                        wp_flickr_gallery.ajax('');
                     }            
                 }        
             },
@@ -475,7 +475,7 @@ if (typeof window.wp-flickr-gallery === "undefined") {
                 for (var i=0;i<anni.length;i++) {
                     if ((anni[i].className.search(/\bannotated\b/) !== -1) &&
                     (anni[i].getAttribute('usemap') !== null)) {
-                        wp-flickr-gallery.anno_prepImage(anni[i]);
+                        wp_flickr_gallery.anno_prepImage(anni[i]);
                     }
                 }
             },
@@ -496,7 +496,7 @@ if (typeof window.wp-flickr-gallery === "undefined") {
                         a.associatedCoords = coo;
                         a.style.width = (parseInt(coo[2], 10) - parseInt(coo[0], 10)) + 'px';
                         a.style.height = (parseInt(coo[3], 10) - parseInt(coo[1], 10)) + 'px';
-                        var thisAreaPosition = wp-flickr-gallery.anno__getAreaPosition(img,coo);
+                        var thisAreaPosition = wp_flickr_gallery.anno__getAreaPosition(img,coo);
                         a.style.left = thisAreaPosition[0] + 'px';
                         a.style.top = thisAreaPosition[1] + 'px';
                         a.className = 'annotation';
@@ -516,24 +516,24 @@ if (typeof window.wp-flickr-gallery === "undefined") {
                         img.areas[img.areas.length] = a;
                         document.getElementsByTagName('body')[0].appendChild(a);
         
-                        wp-flickr-gallery.anno_addEvent(a,"mouseover",
+                        wp_flickr_gallery.anno_addEvent(a,"mouseover",
                         function () {
-                            clearTimeout(wp-flickr-gallery.anno_hiderTimeout);
+                            clearTimeout(wp_flickr_gallery.anno_hiderTimeout);
                         }
                         );
         
                         //eval("var fn"+j+" = function () {overlib( aI.getTitle("+j+"), STICKY, MOUSEOFF, BELOW, WRAP, CELLPAD, 5, FGCOLOR, '#FFFFCC', BGCOLOR, '#FFFF44', BORDER, 2, TEXTCOLOR, '#000000', TEXTSIZE, 2, TIMEOUT, 2000, DELAY, 50);}");
-                        eval("var fn"+j+" = function () {overlib( wp-flickr-gallery.anno_getTitle("+j+"), STICKY, MOUSEOFF, HAUTO, VAUTO, WRAP, CSSCLASS, TEXTFONTCLASS,'annotation-fontClass',FGCLASS,'annotation-fgClass', BGCLASS,'annotation-bgClass',CAPTIONFONTCLASS,'annotation-capfontClass', TIMEOUT, 2000, DELAY, 50);}");
+                        eval("var fn"+j+" = function () {overlib( wp_flickr_gallery.anno_getTitle("+j+"), STICKY, MOUSEOFF, HAUTO, VAUTO, WRAP, CSSCLASS, TEXTFONTCLASS,'annotation-fontClass',FGCLASS,'annotation-fgClass', BGCLASS,'annotation-bgClass',CAPTIONFONTCLASS,'annotation-capfontClass', TIMEOUT, 2000, DELAY, 50);}");
         
-                        wp-flickr-gallery.anno_addEvent(a,"mouseover", eval("fn"+j));
-                        wp-flickr-gallery.anno_addEvent(a,"mouseout", function () {
+                        wp_flickr_gallery.anno_addEvent(a,"mouseover", eval("fn"+j));
+                        wp_flickr_gallery.anno_addEvent(a,"mouseout", function () {
                             nd();
                         });
                     }
                 }
         
-                wp-flickr-gallery.anno_addEvent(img,"mouseover",wp-flickr-gallery.anno_showAreas);
-                wp-flickr-gallery.anno_addEvent(img,"mouseout",wp-flickr-gallery.anno_hideAreas);        
+                wp_flickr_gallery.anno_addEvent(img,"mouseover",wp_flickr_gallery.anno_showAreas);
+                wp_flickr_gallery.anno_addEvent(img,"mouseout",wp_flickr_gallery.anno_hideAreas);        
             },
             
             anno__getAreaPosition: function (img,coo) {
@@ -556,26 +556,26 @@ if (typeof window.wp-flickr-gallery === "undefined") {
             },
             
             anno_showAreas: function (e) {
-                clearTimeout(wp-flickr-gallery.anno_hiderTimeout);
+                clearTimeout(wp_flickr_gallery.anno_hiderTimeout);
                 var t = null;
                 if (e && e.target) { t = e.target; }
                 if (window.event && window.event.srcElement) { t = window.event.srcElement; }
                 // Recalculate area positions
                 for (var k=0;k<t.areas.length;k++) {
-                    var thisAreaPosition = wp-flickr-gallery.anno__getAreaPosition(t,t.areas[k].associatedCoords);
+                    var thisAreaPosition = wp_flickr_gallery.anno__getAreaPosition(t,t.areas[k].associatedCoords);
                     t.areas[k].style.left = thisAreaPosition[0] + 'px';
                     t.areas[k].style.top = thisAreaPosition[1] + 'px';
         
                 }
-                wp-flickr-gallery.anno__setAreas(t,'block');        
+                wp_flickr_gallery.anno__setAreas(t,'block');        
             },
             
             anno_hideAreas: function (e) {
                 var t = null;
                 if (e && e.target) { t = e.target; }
                 if (window.event && window.event.srcElement) { t = window.event.srcElement; }
-                clearTimeout(wp-flickr-gallery.anno_hiderTimeout);
-                wp-flickr-gallery.anno_hiderTimeout = setTimeout( function () { wp-flickr-gallery.anno__setAreas(t,'none'); }, 300 );        
+                clearTimeout(wp_flickr_gallery.anno_hiderTimeout);
+                wp_flickr_gallery.anno_hiderTimeout = setTimeout( function () { wp_flickr_gallery.anno__setAreas(t,'none'); }, 300 );        
             },
             
             anno_addEvent: function (elm, evType, fn, useCapture) {
@@ -618,5 +618,5 @@ if (typeof window.wp-flickr-gallery === "undefined") {
 }
 
 jQuery(document).ready(function (){
-    //jQuery.historyInit(wp-flickr-gallery.pageload);
+    //jQuery.historyInit(wp_flickr_gallery.pageload);
 });

@@ -120,31 +120,31 @@
 
 <script type='text/javascript'>
 //<!--
-	wp-flickr-gallery_remote_url = '<?php echo $remote_url; ?>';
+	wp_flickr_gallery_remote_url = '<?php echo $remote_url; ?>';
 	
 <?php if ($can_edit == true): ?>	
-	wp-flickr-gallery.photo_id = '<?php echo $photo_id; ?>';
-	wp-flickr-gallery.title = '<?php echo preg_replace('/[\n|\r]/','',htmlspecialchars($title, ENT_QUOTES)); ?>';
-	wp-flickr-gallery.desc = '<?php echo preg_replace('/[\n|\r]/','',htmlspecialchars($description_orig, ENT_QUOTES)); ?>';
-	wp-flickr-gallery.nodesc = '<?php echo $no_description_text; ?>';
+	wp_flickr_gallery.photo_id = '<?php echo $photo_id; ?>';
+	wp_flickr_gallery.title = '<?php echo preg_replace('/[\n|\r]/','',htmlspecialchars($title, ENT_QUOTES)); ?>';
+	wp_flickr_gallery.desc = '<?php echo preg_replace('/[\n|\r]/','',htmlspecialchars($description_orig, ENT_QUOTES)); ?>';
+	wp_flickr_gallery.nodesc = '<?php echo $no_description_text; ?>';
 	
-	wp-flickr-gallery.next_page = '<?php echo $next_page; ?>';
-	wp-flickr-gallery.next_id = '<?php echo $next_id; ?>';
-	wp-flickr-gallery.prev_page = '<?php echo $prev_page; ?>';
-	wp-flickr-gallery.prev_id = '<?php echo $prev_id; ?>';
+	wp_flickr_gallery.next_page = '<?php echo $next_page; ?>';
+	wp_flickr_gallery.next_id = '<?php echo $next_id; ?>';
+	wp_flickr_gallery.prev_page = '<?php echo $prev_page; ?>';
+	wp_flickr_gallery.prev_id = '<?php echo $prev_id; ?>';
 	
-	wp-flickr-gallery.album = '<?php echo $album; ?>';
-	wp-flickr-gallery.tags = '<?php echo $in_tags; ?>';	
+	wp_flickr_gallery.album = '<?php echo $album; ?>';
+	wp_flickr_gallery.tags = '<?php echo $in_tags; ?>';	
 	
-	wp-flickr-gallery.post_value = '<?php echo $post_value; ?>';
+	wp_flickr_gallery.post_value = '<?php echo $post_value; ?>';
 	
-	//wp-flickr-gallery.makeEditable('wp-flickr-gallery-photo-desc');
-	//wp-flickr-gallery.makeEditable('wp-flickr-gallery-photo-title');   		
-	wp-flickr-gallery.enable_post_helper();
+	//wp_flickr_gallery.makeEditable('wp-flickr-gallery-photo-desc');
+	//wp_flickr_gallery.makeEditable('wp-flickr-gallery-photo-title');   		
+	wp_flickr_gallery.enable_post_helper();
 <?php endif; ?>
 	
 
-	wp-flickr-gallery.prefetch('<?php echo $next_image; ?>');
+	wp_flickr_gallery.prefetch('<?php echo $next_image; ?>');
 	
 //-->
 </script>
