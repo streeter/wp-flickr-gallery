@@ -30,7 +30,7 @@ function wp_flickr_gallery_admin_add_options_page() {
 	}
 }
 
-function wp_flickr_gallery_init() {
+function wp_flickr_gallery_install() {
 	global $wpdb, $user_level;
 		 
 	$fa_table =  $wpdb->prefix . "wp-flickr-gallery_cache";
@@ -67,7 +67,7 @@ function wp_flickr_gallery_admin_print_options_page() {
 
 	$ver = $options['version'];
 	if ($ver != WPFLICKRGALLERY_VERSION) {
-		wp_flickr_gallery_init();
+		wp_flickr_gallery_install();
 	}
 
 	// Setup htaccess 
@@ -630,7 +630,7 @@ function wp_flickr_gallery_insert_with_markers($filename, $marker, $insertion) {
 
 // function for outputting header information
 //
-function wp_flickr_gallery_action_init() {
+function wp_flickr_gallery_header() {
 	global $wp_flickr_gallery_options;
 	$wp_flickr_gallery_options = get_option('wp-flickr-gallery_options');
 	if ($wp_flickr_gallery_options['wp_enable_wp-flickr-gallery_globally'] == 'true') {
@@ -769,9 +769,28 @@ function wp_flickr_gallery_action_parse_query($wp_query) {
 	}
 }
 
+function wp_flickr_gallery_widgets_init() {
+	require_once('WPFlickrGalleryWidgetRandom.class.php');
+	register_widget('WPFlickrGallery_Widget_Random');
+}
 
-add_action('parse_query', 'wp_flickr_gallery_action_parse_query');
-add_action('init', 'wp_flickr_gallery_action_init');
-add_action('admin_menu', 'wp_flickr_gallery_admin_add_options_page');
 
-add_filter('the_content', 'wp_flickr_gallery_filter');
+function wp_flickr_gallery_init() {
+	/* Setup the header stuff */
+	wp_flickr_gallery_header();
+	
+	/* Setup the query parsing */
+	add_action('parse_query', 'wp_flickr_gallery_action_parse_query');
+	
+	/* Setup the admin stuff */
+	add_action('admin_menu', 'wp_flickr_gallery_admin_add_options_page');
+	
+	/* Setup the content filter */
+	add_filter('the_content', 'wp_flickr_gallery_filter');
+}
+
+/* Initializiation */
+add_action('init', 'wp_flickr_gallery_init');
+
+/* Setup widgets */
+add_action( 'widgets_init', 'wp_flickr_gallery_widgets_init' );
