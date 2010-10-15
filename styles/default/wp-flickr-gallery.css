@@ -57,7 +57,7 @@
 	border: none;
 	margin: 0;
 	border-collapse: separate;
-	border-spacing: 20px;
+	border-spacing: 5px;
 }
 #wp-flickr-gallery td.wp-flickr-gallery-album,
 #wp-flickr-gallery td.wp-flickr-gallery-photo {
